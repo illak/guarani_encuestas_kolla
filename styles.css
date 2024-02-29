@@ -1,0 +1,15 @@
+.text-col-izq {
+   background-color: #A7E681;
+   padding-left: 30px;
+   box-sizing: border-box;
+}
+
+.text-col-der {
+   background-color: #8CE6D1;
+   padding-left: 20px;
+   box-sizing: border-box;
+}
+
+.reveal table {
+  font-size: smaller;
+}

@@ -1,0 +1,345 @@
+---
+title: "Tutorial SIU-Kolla"
+subtitle: "Módulo de gestión de encuestas"
+author: "Illak Zapata"
+editor: source
+css: styles.css
+engine: knitr
+format: 
+  revealjs:
+    transition: slide
+    navigation-mode: vertical 
+    slide-number: c/t
+    width: 1600
+    height: 900
+    theme: simple
+    echo: true
+---
+
+# Advertencia! {background-color="#CC0001"}
+
+. . .
+
+El autor **no** es experto en el uso del sistema Kolla, la idea es aprender en conjunto
+y de esta forma, empezar a entrar en contacto con otros sistemas distintos al
+actual.
+
+
+## Sobre el módulo
+
+Esta solución permite generar encuestas de diferente tipo para la realización de censos de opinión o relevamientos de datos que busquen mejorar distintos aspectos del funcionamiento de las instituciones y la vida académica de la comunidad estudiantil y demás actores del sistema universitario.
+
+. . .
+
+![](imgs/funcionalidades.png){fig-align="center"}
+
+. . .
+
+ver: <https://www.siu.edu.ar/siu-kolla>
+
+## Registro + login
+
+El registro/alta de usuarios está a cargo de personal externo, en nuestro caso va a estar a cargo del equipo de soporte que forma parte del convenio *GOB + UNC + SIU* (por ahora: Paula Cora y Sebastián Oliva).
+
+. . .
+
+Una vez generados los usuarios, deberemos *loguearnos* en el sistema:
+
+<https://academico.psi.unc.edu.ar/encuestas/>
+
+## Recomendaciones
+
+Esto ya lo sabemos pero sirve a modo de repaso:
+
+. . .
+
+::: incremental
+1.  Identificar el objetivo de la encuesta
+2.  ¿De qué tipo es?
+    i)  Cualitativa
+    ii) Cuantitativa
+    iii) ¿Es un relevamiento?
+3.  ¿A quiénes estará dirigido?
+4.  Finalmente y luego de haber realizado los pasos anteriores: Elaborar el cuestionario
+:::
+
+## Creación de encuestas
+
+Pasos:
+
+::: incremental
+1.  Crear preguntas
+2.  Crear respuestas
+3.  Asociar respuestas a preguntas
+4.  Crear encuestas
+:::
+
+## Tipos de preguntas
+
+### Abiertas:
+
+::: columns
+::: {.column width="50%"}
+-   Número decimal
+-   Número entero
+-   Número de teléfono con código internacional
+-   Número entre 1000 y 9000 (año)
+-   Número entre 0 y 100 (edad)
+:::
+
+::: {.column width="50%"}
+-   Texto con formato de correo electrónico
+-   Texto libre (área)
+-   Texto libre (renglón)
+-   Fecha
+-   Fecha con cálculo de años (por ejemplo p/ cálculo de edad a partir de fecha de nacimiento)
+:::
+:::
+
+## 
+
+::: columns
+::: {.column .text-col-izq width="50%"}
+### Cerradas
+
+-   Check con múltiples opciones
+-   Combo (autocompletable -\> muchas rtas)
+-   Combo (listado -\> pocas rtas)
+-   Radio buttons
+-   Lista de múltiples respuestas
+:::
+
+::: {.column .text-col-der width="50%"}
+### Especiales
+
+-   Etiqueta Título
+-   Etiqueta Subtítulo
+-   Etiqueta Texto Enriquecido
+-   Localidad
+-   Localidad y Código Postal
+:::
+:::
+
+. . .
+
+Es en las preguntas **cerradas** en donde se asocian las **respuestas creadas**.
+
+## Ejemplo
+
+**Relevamiento de situación actual**
+
+. . .
+
+**Objetivo:** Se desea conocer situación actual, actualizar datos personales de los socios y el uso del establecimiento en el último año.
+
+. . .
+
+**Texto inicial:**
+
+> Estimado socio, le solicitamos nos brinde información actualizada acerca de sus datos, y el uso del club en los últimos 12 meses. Estos datos nos permitirán brindarles un mejor servicio. ¡Muchas gracias!
+
+. . .
+
+Varios **bloques temáticos** que agrupan preguntas, por ejemplo:
+
+. . .
+
+**Bloque:** Datos personales
+
+. . .
+
+**Bloque:** Uso del establecimiento
+
+## Bloque: datos personales
+
+| Pregunta                  | ¿Obligatoria? | Estilo de pregunta                                     | Valores de respuestas                                                                |
+|-----------------|:----------------|:----------------|:-------------------|
+| Apellido y nombre         | Sí            | Texto libre (renglón)                                  |                                                                                      |
+| Tipo de documento         | Sí            | Combo (listado                                         | DNI \| Cédula de identidad \| Libreta de enrolamiento \| Libreta cívica \| Pasaporte |
+| Nro Documento             | Sí            | Número entero                                          |                                                                                      |
+| País emisor del documento | Sí            | Combo (autocompletable)                                | Listado de países                                                                    |
+| Nro de teléfono           | No            | Número de teléfono con código internacional y regional |                                                                                      |
+| Correo electrónico        | No            | Texto con formato de correo electrónico                |                                                                                      |
+| Fecha de nacimiento       | No            | Tipo fecha con cálculo de años                         |                                                                                      |
+
+## Otro ejemplo: Encuesta de calidad
+
+![](imgs/otro_ejemplo_encuesta.png){fig-align="center"}
+
+# ¿Cómo creamos preguntas en Kolla? {background-color="#CC0001"}
+
+##  {background-image="imgs/crear_preguntas.png" background-size="contain"}
+
+##  {background-image="imgs/nueva_pregunta.png" background-size="contain"}
+
+## `r fontawesome::fa("laptop-code")` Demo!
+
+
+![](https://media1.tenor.com/m/y2JXkY1pXkwAAAAC/cat-computer.gif){fig-align="center"}
+
+## Tablas asociadas
+
+Esta funcionalidad permite gestionar grupos de respuestas para asociar a preguntas de **tipo cerradas**.
+
+. . .
+
+Crear y administrar Tablas Asociadas tiene las siguientes ventajas:
+
+
+::: {.incremental}
+
+* Permite administrar un grupo de respuestas que quiere asociarse a una pregunta.
+* Permite mantener de manera simple los listados de respuestas.
+* Independiza la gestión de grupos de respuestas de la necesidad de asistencia técnica para actualizar la base de datos.
+
+:::
+
+. . .
+
+También existen las **tablas externas**. Son tablas que ya vienen cargadas en
+el esquema de Kolla y que por lo general son de gran extensión. Por ejemplo:
+tabla de países
+
+## `r fontawesome::fa("laptop-code")` Demo!
+
+
+![](https://media1.tenor.com/m/y2JXkY1pXkwAAAAC/cat-computer.gif){fig-align="center"}
+
+
+## ¿Puedo agregar comportamiento dinámico? (o lógica)
+
+. . .
+
+Sí!!! Para esto usaremos la opción de **Definir preguntas dependientes**.
+
+. . .
+
+Esta operación incorpora la posibilidad de agregar comportamientos dinámicos a las encuestas.
+
+. . .
+
+El comportamiento se establece por dependencias entre preguntas y respuestas dentro de la misma encuesta.
+
+. . .
+
+Accediendo a esta operación SIU-Kolla ofrecerá el listado de encuestas disponibles por Unidad de Gestión. Se debe seleccionar la Unidad de Gestión y mediante la opción **Filtrar** podrán verse las encuestas disponibles. Para cada una de ellas se ofrecerá las opciones para **Definir Dependencias** y para **Previsualizar Dependencias**.
+
+. . .
+
+Ejemplo de uso: *¿A cuántas charlas asistió?* de acuerdo al número seleccionado (dentro de
+un conjunto de opciones predeterminadas) se muestran tantas preguntas de valoración (o bloques).
+
+
+# Encuestas {background-color="#CC0001"}
+
+## Modelado de encuestas
+
+:::{.incremental}
+
+* Como mencionamos, al momento de modelar la encuesta es bueno detenerse un
+poco a pensar el diseño de la misma.
+* Una vez que contamos con el diseño y esquema de la encuesta, podemos pasar a
+representarla con las estructuras y preguntas que ofrece Kolla.
+* Como sugerencia considerar el siguiente proceso iterativo
+
+:::
+
+## Modelado de encuestas
+
+Proceso iterativo:
+
+:::{.incremental}
+
+1. Por cada **bloque** que compone la encuesta:
+    i) Identificar si será necesario crear **tablas** para preguntas cerradas
+    que utilicen el mismo conjunto de respuestas.
+    ii) Por cada **pregunta** que compone el bloque:
+    
+          A.    Crear la **pregunta** eligiendo la que sea adecuada.
+          B.    Crear **respuestas** si es necesario.
+          C.    **Asociar las respuestas** a la pregunta si es necesario.
+          
+    iii) Crear **bloque** y asociarle las preguntas (crear encuesta si es el primer bloque)
+    iv) Crear **dependencias** que sean entre preguntas dentro del bloque.
+    
+2. Crear **dependencias** en caso de que tengan como destino otro bloque.
+
+:::
+
+
+
+## Ejemplo
+
+![](imgs/ejemplo_modelado_encuesta.png){fig-align="center"}
+
+
+## Resumen modelado (proceso iterativo)
+
+
+1. Por cada **bloque**:
+    i) ¿**Tablas**?
+    ii) Por cada **pregunta**:
+        A) Crear **pregunta**
+        B) ¿Crear **respuestas**?
+        C) ¿Asociar **respuestas**?
+    iii) Crear **bloque** (¿**encuesta**?)
+    iv) Crear **dependencias**
+2. Crear **dependencias bloque**
+
+
+## Ejemplo bloque de preguntas personales
+
+- **Nombre y Apellido**
+- **Lugar de Procedencia**
+- **Composición del Grupo**
+  - Solo/a, Amigos, Pareja, Familia, Otros
+- **Nivel de Educación**
+  - Sin estudios, Primario completo, Secundario incompleto, Secundario completo,
+Terciario incompleto, Terciario completo, Universitario incompleto, Universitario
+completo
+- **Actividad Laboral**
+  - Profesional, Estudiante, Empleado estatal, Empresario, Jubilado/pensionado,
+Empleado privado, Docente, Otro
+
+
+## Ejemplo de uso de tablas en bloque de "feedback"
+
+
+::: columns
+::: {.column width="50%"}
+
+- **Calidad de servicios**
+- Transporte media distancia
+- Alojamiento
+- Gastronomía
+- Carteles y señalización urbana
+- Iluminación
+- **Calidad de atención**
+- Trato recibido
+- Nivel de información
+- Capacidad para resolver problemas
+
+:::
+::: {.column width="50%"}
+
+Como en este caso las respuestas a todas las preguntas son rangos de números
+del 1 al 10 (por ejemplo) y necesito que se repita para las 8 preguntas, es
+fundamental el uso de tablas que nos ahorra trabajo (obviamos el paso de asociación).
+
+:::
+:::
+
+# Formularios {background-color="#CC0001"}
+
+## 
+
+Los **formularios** permiten:
+
+:::{.incremental}
+
+* **Agrupar** diferentes encuestas
+* Usarlas para realizar evaluaciones sobre distintos **conceptos** (datos categorizados)
+
+:::
+
+
